@@ -3,31 +3,53 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
   alert("Generate a password");
-  var char = prompt("how many character? (min:8 max:128)")
-  if (char < 8){
-
+  var charLength = prompt("how many character? (min:8 max:128)")
+  if (charLength < 8 || charLength>128){
+    generatePassword()
   }
+  var specChar = [
+    '[', '`', '!', '@',  '#', '$', '%',
+    '^', '&', '*', '(',  ')', '_', '+',
+    '-', '=', '[', ']',  '{', '}', ';',
+    "'", ':', '"', '\\', '|', ',', '.',
+    '<', '>', '/', '?',  '~', ']', '/'
+  ]
+
+  var upperChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+  var lowerChar = ['a', 'b','c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's','t', 'u', 'v', 'w', 'x', 'y', 'z']
+
+  var numbChar = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
   var upper = confirm("I want uppercase characters")
-  if (upper == true) {
-
-  }
+ 
   var lower = confirm("I want lowercase characters")
-  if (lower == true) {
+ 
+  var numb = confirm("I want numbers")
+ 
+  var spec = confirm("I want special characters")
+ 
+  if (upper === false && lower === false && numb === false && spec === false) {
+    generatePassword()
+  }
+
+  function getRandomIndex (arr) {
+    var index = Math.floor(Math.random() * arr.length)
+    var element = arr[index]
+    return element
+  }
+  console.log(getRandomIndex(upperChar))
+
+  for (var i = 0; i < charLength; i++) {
     
   }
-  var numb = confirm("I want numbers")
-  if(numb == true) {
 
-  }
-  var spec = confirm("I want special characters")
-  if (spec == true) {
-
-  }
-  console.log(char)
+  console.log(charLength)
   console.log(upper)
   console.log(lower)
   console.log(numb)
   console.log(spec)
+  return "hello"
 }
 
 // Write password to the #password input
